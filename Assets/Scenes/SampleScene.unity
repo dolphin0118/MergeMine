@@ -2327,8 +2327,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 160cb2d7862c79342b621d6e829cef4c, type: 3}
   - {fileID: 21300000, guid: 9b277ddf020403c4588e81cf5bec1ef5, type: 3}
+  - {fileID: 21300000, guid: cb8158071f5a1be4aa107f9faaa56ee0, type: 3}
+  - {fileID: 21300000, guid: 37551507653d8b44b94b1af91ad339a2, type: 3}
+  - {fileID: 21300000, guid: e12fa2c92d30cf043ad22b8d1b695165, type: 3}
+  - {fileID: 21300000, guid: 160cb2d7862c79342b621d6e829cef4c, type: 3}
 --- !u!224 &1518026773 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6715497702971643829, guid: 19b3c38b12d90ef43b1dff2f9e3a306f, type: 3}
