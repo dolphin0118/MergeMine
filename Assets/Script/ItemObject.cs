@@ -18,8 +18,7 @@ public class ItemObject : MonoBehaviour {
         item_image = GetComponent<Image>();
     }
 
-    void Update()
-    {
+    void Update() {
         if(ItemDB.instance != null) {
             _item = ItemDB.instance.item_DB[item_Level];
             this.item_Level = _item.item_Level;
@@ -32,11 +31,10 @@ public class ItemObject : MonoBehaviour {
 
     void Drop() {
         if(Input.GetKeyDown(KeyCode.Space)) {
-            Vector3 drop_item = Camera.main.ScreenToWorldPoint(this.transform.position);
-            drop_item.z = 0;
-            GameObject Drop_item = Instantiate(item_drop, drop_item, Quaternion.identity);
-            Drop_item.GetComponent<SpriteRenderer>().sprite = item_image.sprite;
-            Debug.Log("Drop Item");
+            Vector3 drop_pos = Camera.main.ScreenToWorldPoint(this.transform.position);
+            drop_pos.z = 0;
+            GameObject Drop_item = Instantiate(item_drop, drop_pos, Quaternion.identity);
+            Drop_item.GetComponent<DropItem>().item = item;
         }
     }
 

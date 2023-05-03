@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5538758057607885473}
   m_Layer: 6
   m_Name: DropItem
-  m_TagString: Untagged
+  m_TagString: Pick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 7e838e588cfa3a54abe8ea22f5458286, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6bd797d391c04d147bf2a9aba766bf5f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
