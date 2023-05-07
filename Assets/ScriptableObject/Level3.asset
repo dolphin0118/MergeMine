@@ -16,3 +16,5 @@ MonoBehaviour:
   item_image: {fileID: 21300000, guid: c8f272d5ac74507459020a1b1e0195b6, type: 3}
   item_name: Axe_3
   item_drop: {fileID: 9196898165207762589, guid: ec8f0f1489ea38d49ab51c44aa15f384, type: 3}
+  item_hardness: 70
+  item_durability: 5

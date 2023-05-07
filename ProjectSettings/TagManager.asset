@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Block
   - Pick
+  - Pick_Parent
+  - Block_Parent
   layers:
   - Default
   - TransparentFX

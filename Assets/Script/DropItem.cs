@@ -6,12 +6,14 @@ public class DropItem : MonoBehaviour {
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Item _item;
+
     public GameObject item_drop = null;
     public Item item {
         get{return _item;}
         set{_item = value;}
     }
     public float Rotate_force = 200;
+    public int? item_durability;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -19,16 +21,21 @@ public class DropItem : MonoBehaviour {
     }
 
     void Update(){
+        Item_destroy();
         Item_rotate();
         Item_Set();
     }
 
     void OnCollisionEnter2D(Collision2D other) {
         if(other.collider.tag =="Block") {
+            if(item_durability == null) item_durability = _item.item_durability;
             rb.AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
+            item_durability -= 1;
         }
     }
-
+    void Item_destroy() {
+        if(item_durability <= 0) Destroy(gameObject); 
+    }
     void Item_Set() {
         spriteRenderer.sprite = item.item_image;    
     }

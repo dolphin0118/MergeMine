@@ -10,15 +10,15 @@ public class Block_state : MonoBehaviour {
     void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = block.Block_image[0];
+        Hp_percent = (float)Math.Round(block_hp/block.Block_hardness, 2);
     }
 
     void Update() {
         broken_degree();
-        if(Hp_percent > 1) Destroy_block();
+        if(Hp_percent >= 1) Destroy_block();
     }
 
     void broken_degree() {
-        Hp_percent = (float)Math.Round(block_hp/block.Block_hardness, 2);
         if(Hp_percent < 0.1) spriteRenderer.sprite = block.Block_image[0];
         else if(Hp_percent < 0.3) spriteRenderer.sprite = block.Block_image[1];
         else if(Hp_percent < 0.5) spriteRenderer.sprite = block.Block_image[2];
@@ -29,7 +29,7 @@ public class Block_state : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Pick") {
             GameObject Pick = other.gameObject;
-            Debug.Log(Hp_percent);
+            Hp_percent += (float)Pick.GetComponent<DropItem>().item.item_hardness/100;
         }
     }
     void Destroy_block() {

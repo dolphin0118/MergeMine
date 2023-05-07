@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
  [CreateAssetMenu]
+ [SerializeField]
 public class Item : ScriptableObject{
     public int item_Level;
     public Sprite item_image;
-    public string item_name;
     public GameObject item_drop;
+    public int item_hardness;
+    public int item_durability;
 }
