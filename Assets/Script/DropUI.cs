@@ -8,7 +8,7 @@ public class DropUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointe
     private Image image;
     private RectTransform rect;
     public GameObject Item_prefab;
-    private ItemObject previous_object = null;
+    public ItemObject previous_object = null;
     private ItemObject recent_object;
     private ItemObject temp_object;
     
