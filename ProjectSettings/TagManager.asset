@@ -8,6 +8,7 @@ TagManager:
   - Pick
   - Pick_Parent
   - Block_Parent
+  - Canvas
   layers:
   - Default
   - TransparentFX

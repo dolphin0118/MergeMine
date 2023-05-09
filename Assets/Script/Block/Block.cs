@@ -7,5 +7,5 @@ using UnityEngine;
 public class Block : ScriptableObject{
     public float Block_hardness;
     public Sprite[] Block_image;
-    public string Block_name;
+    public int Block_gold;
 }

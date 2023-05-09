@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 public class Block_state : MonoBehaviour {
     public Block block;
+    public GameObject text;
     private SpriteRenderer spriteRenderer;
     private float block_hp = 0;
     private float Hp_percent;
@@ -15,7 +17,8 @@ public class Block_state : MonoBehaviour {
 
     void Update() {
         broken_degree();
-        if(Hp_percent >= 1) Destroy_block();
+        Destroy_block();
+        text.GetComponent<TextMeshProUGUI>().text = "DropManager.instance.Gold";
     }
 
     void broken_degree() {
@@ -33,6 +36,12 @@ public class Block_state : MonoBehaviour {
         }
     }
     void Destroy_block() {
-        Destroy(gameObject);
+        if(Hp_percent >= 1) {
+            GameObject canvas = GameObject.FindWithTag("Canvas");
+            GameObject text_inst = Instantiate(text, transform.position, Quaternion.identity);
+            text_inst.transform.SetParent(canvas.transform);
+            DropManager.instance.Gold += block.Block_gold;
+            Destroy(gameObject);
+        }
     }
 }

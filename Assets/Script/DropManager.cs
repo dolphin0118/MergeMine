@@ -3,25 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DropManager : MonoBehaviour {
+    public static DropManager instance = null;
+    public int Gold = 0;
     private int Slot_count = 0;
     public ItemObject[] Items;
     void Awake() {
+        if(instance == null) {instance = this;}
+        else Destroy(this.gameObject);
         Slot_count = this.transform.childCount;
         Items = new ItemObject[Slot_count];
     }
 
     void Update(){
-        Drop_check();
+        Item_check();
         Drop_All();
+        Respawn_All();
     }
 
     bool Slot_check() {
         for (int i = 0; i < Slot_count; i++) {
-            if (this.transform.GetChild(i).transform.childCount == 1) return true;
+            if (this.transform.GetChild(i).transform.childCount == 1) return false;
         }
-        return false;
+        return true;
     }
-    void Drop_check() {
+
+    void Item_check() {
         for (int i = 0; i < Slot_count; i++) {
             if(this.transform.GetChild(i).childCount == 1) {
                 Items[i] = this.transform.GetChild(i).GetChild(0).GetComponent<ItemObject>();
@@ -29,9 +35,27 @@ public class DropManager : MonoBehaviour {
             else Items[i] = null;
         }
     }
+
     void Drop_All() {
-        if(Input.GetKeyDown(KeyCode.Space) && Slot_check()) {
+        if(Input.GetKeyDown(KeyCode.Space) && !Slot_check()) {
             for (int i = 0; i < Slot_count; i++) if(Items[i] != null) Items[i].Drop();
+        }
+    }
+
+    void Respawn_All() {
+        if(Input.GetKeyDown(KeyCode.Space) && Slot_check()) {
+            for(int i = 0; i < Slot_count; i++) this.transform.GetChild(i).GetComponent<DropUI>().Respawn();
+        }
+    }
+
+    public void Create_Item() {
+        if(!Slot_check()) {
+            for (int i = 0; i < Slot_count; i++) {
+                if(Items[i] == null) {
+                    this.transform.GetChild(i).GetComponent<DropUI>().spawn();
+                    break;
+                }
+            }
         }
     }
 }

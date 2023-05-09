@@ -8,21 +8,15 @@ public class DropUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointe
     private Image image;
     private RectTransform rect;
     public GameObject Item_prefab;
-    public ItemObject previous_object = null;
+    private ItemObject previous_object = null;
     private ItemObject recent_object;
-    public int recent_Item_Level;
     
     void Awake() {
         if(this.transform.childCount > 0) {
             previous_object = transform.GetChild(0).gameObject.GetComponent<ItemObject>();
-            recent_Item_Level = previous_object.item_Level;
         }
         image = GetComponent<Image>();
         rect = GetComponent<RectTransform>();
-    }
-
-    void Update() {
-        if(Input.GetKeyDown(KeyCode.Space) && previous_object == null) Respawn();
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
@@ -55,8 +49,7 @@ public class DropUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointe
         }
         else if(previous_object.item_Level == recent_object.item_Level){
             previous_object.item_Level += 1;
-            recent_Item_Level = previous_object.item_Level;
-            recent_object.item_Level = 0;
+            recent_object.item_Level = int.MaxValue;
             Destroy(eventData.pointerDrag.transform.gameObject);
         }
         else return;
@@ -65,14 +58,21 @@ public class DropUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointe
 
     public void Respawn() {
         GameObject Pick_Clone = GameObject.FindWithTag("Pick_Parent");
-        if(Pick_Clone.transform.childCount == 0 && this.transform.childCount == 0) {
+        if(Pick_Clone.transform.childCount == 0 && this.transform.childCount == 0 && previous_object.item_Level < int.MaxValue) {
             GameObject Pick_prefab = Instantiate(Item_prefab, transform.position, Quaternion.identity);
             Pick_prefab.transform.SetParent(transform);
-            Pick_prefab.GetComponent<ItemObject>().item_Level = recent_Item_Level;
+            Pick_prefab.GetComponent<ItemObject>().item_Level = previous_object.item_Level;
 
             previous_object = Pick_prefab.transform.gameObject.GetComponent<ItemObject>();
             Pick_prefab.GetComponent<RectTransform>().offsetMin = new Vector2(5, 5);
             Pick_prefab.GetComponent<RectTransform>().offsetMax = new Vector2(-5, -5);
         }
+    }
+    public void spawn() {
+        GameObject Pick_prefab = Instantiate(Item_prefab, transform.position, Quaternion.identity);
+            Pick_prefab.transform.SetParent(transform);
+            previous_object = Pick_prefab.transform.gameObject.GetComponent<ItemObject>();
+            Pick_prefab.GetComponent<RectTransform>().offsetMin = new Vector2(5, 5);
+            Pick_prefab.GetComponent<RectTransform>().offsetMax = new Vector2(-5, -5);
     }
 }
