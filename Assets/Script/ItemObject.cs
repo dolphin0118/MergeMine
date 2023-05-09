@@ -7,9 +7,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 
- [Serializable]
 public class ItemObject : MonoBehaviour {
-    [SerializeField]
     private Item _item;
     private Image item_image;
     private GameObject item_drop = null;
@@ -31,18 +29,14 @@ public class ItemObject : MonoBehaviour {
             this.item_image.sprite = _item.item_image;
             this.item_drop = _item.item_drop;
         }
-        Drop();
     }
 
-    void Drop() {
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            Vector3 drop_pos = Camera.main.ScreenToWorldPoint(this.transform.position);
-            drop_pos.z = 0;
-            GameObject Drop_item = Instantiate(item_drop, drop_pos, Quaternion.identity);
-            Drop_item.GetComponent<DropItem>().item = item;
-            Drop_item.transform.parent = Drop_item_parent.transform;
-            Destroy(gameObject);
-        }
+    public void Drop() {
+        Vector3 drop_pos = Camera.main.ScreenToWorldPoint(this.transform.position);
+        drop_pos.z = 0;
+        GameObject Drop_item = Instantiate(item_drop, drop_pos, Quaternion.identity);
+        Drop_item.GetComponent<DropItem>().item = item;
+        Drop_item.transform.parent = Drop_item_parent.transform;
+        Destroy(gameObject);
     }
-
 }
