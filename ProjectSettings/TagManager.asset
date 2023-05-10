@@ -9,6 +9,7 @@ TagManager:
   - Pick_Parent
   - Block_Parent
   - Canvas
+  - Gold
   layers:
   - Default
   - TransparentFX

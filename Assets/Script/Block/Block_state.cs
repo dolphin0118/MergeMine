@@ -18,7 +18,7 @@ public class Block_state : MonoBehaviour {
     void Update() {
         broken_degree();
         Destroy_block();
-        text.GetComponent<TextMeshProUGUI>().text = "DropManager.instance.Gold";
+        text.GetComponent<TextMesh>().text = block.Block_gold.ToString() + " Gold";
     }
 
     void broken_degree() {
@@ -40,7 +40,7 @@ public class Block_state : MonoBehaviour {
             GameObject canvas = GameObject.FindWithTag("Canvas");
             GameObject text_inst = Instantiate(text, transform.position, Quaternion.identity);
             text_inst.transform.SetParent(canvas.transform);
-            DropManager.instance.Gold += block.Block_gold;
+            GoldManager.instance.Gold += block.Block_gold;
             Destroy(gameObject);
         }
     }
