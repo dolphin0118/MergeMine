@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DropManager : MonoBehaviour {
     public static DropManager instance = null;
-    public int Gold = 0;
     private int Slot_count = 0;
     public ItemObject[] Items;
     void Awake() {
