@@ -26,7 +26,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
 <<<<<<< HEAD
+<<<<<<< HEAD
         m_Texture: {fileID: 2800000, guid: 1e217a0022b4db04f96a1eccf323ee2f, type: 3}
+=======
+        m_Texture: {fileID: 2800000, guid: b633fc76d86863e4b9628754173be445, type: 3}
+>>>>>>> parent of e51853ef (Revert "update")
 =======
         m_Texture: {fileID: 2800000, guid: b633fc76d86863e4b9628754173be445, type: 3}
 >>>>>>> parent of e51853ef (Revert "update")

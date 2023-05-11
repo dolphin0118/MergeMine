@@ -2746,6 +2746,7 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b3c38b12d90ef43b1dff2f9e3a306f, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &2055268705
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,6 +3535,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of e51853ef (Revert "update")
 =======
 >>>>>>> parent of e51853ef (Revert "update")
 --- !u!1001 &2100043032
