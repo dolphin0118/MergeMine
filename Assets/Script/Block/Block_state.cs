@@ -40,7 +40,7 @@ public class Block_state : MonoBehaviour {
             GameObject canvas = GameObject.FindWithTag("Canvas");
             GameObject text_inst = Instantiate(text, transform.position, Quaternion.identity);
             text_inst.transform.SetParent(canvas.transform);
-            GoldManager.instance.Gold += block.Block_gold;
+           //GoldManager.instance.Gold += block.Block_gold;
             Destroy(gameObject);
         }
     }
