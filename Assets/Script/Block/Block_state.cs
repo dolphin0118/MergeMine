@@ -4,12 +4,14 @@ using UnityEngine;
 using System;
 using TMPro;
 public class Block_state : MonoBehaviour {
-    public Block block;
+    public Block[] block_list;
+    private Block block;
     public GameObject text;
     private SpriteRenderer spriteRenderer;
     private float block_hp = 0;
     private float Hp_percent;
     void Awake() {
+        block = block_list[UnityEngine.Random.Range(0, block_list.Length)];
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = block.Block_image[0];
         Hp_percent = (float)Math.Round(block_hp/block.Block_hardness, 2);

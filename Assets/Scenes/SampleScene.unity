@@ -917,6 +917,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9521b916544ad2a468581f3d313176d2, type: 2}
   - {fileID: 11400000, guid: e116266ea7f01434aabf731e50910e70, type: 2}
   - {fileID: 11400000, guid: 721465077e788b24db8210ca49cd1f0b, type: 2}
+  - {fileID: 11400000, guid: afc7a58e0fe29a34eaa6496dabde2c46, type: 2}
+  - {fileID: 11400000, guid: b21bb7f86f3e408408abd01b9e439016, type: 2}
 --- !u!4 &950039344
 Transform:
   m_ObjectHideFlags: 0
@@ -948,7 +950,6 @@ MonoBehaviour:
   height: -7
   height_value: 4
   block: {fileID: 8955484742013417029, guid: 8c3e7288bee6c2c47a01bbc870ae28f0, type: 3}
-  Block: {fileID: 0}
 --- !u!114 &950039346
 MonoBehaviour:
   m_ObjectHideFlags: 0

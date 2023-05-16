@@ -124,5 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f813e1809a2bf9f4fba39c676f351e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 11400000, guid: 6229eef6ce7b82949b60d256f3b8c6fa, type: 2}
+  block_list:
+  - {fileID: 11400000, guid: 6229eef6ce7b82949b60d256f3b8c6fa, type: 2}
+  - {fileID: 11400000, guid: 29f631631284e014383d56683fa71816, type: 2}
+  - {fileID: 11400000, guid: 5e569a9a9241f074f9ecbca07356888d, type: 2}
+  - {fileID: 11400000, guid: 203207cda32babc499b6cd92ee0fdb8e, type: 2}
   text: {fileID: 7995946994549872248, guid: 49db8fe173c68c94fa3857297781af4e, type: 3}

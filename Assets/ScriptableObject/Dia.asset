@@ -19,4 +19,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 37551507653d8b44b94b1af91ad339a2, type: 3}
   - {fileID: 21300000, guid: e12fa2c92d30cf043ad22b8d1b695165, type: 3}
   - {fileID: 21300000, guid: 160cb2d7862c79342b621d6e829cef4c, type: 3}
-  Block_gold: 50
+  Block_gold: 70
