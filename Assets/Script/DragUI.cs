@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class DragUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Transform canvas; //UI의 최상단 Canvas;
-    private Transform previousParent; //해당 오브젝트가 직전에 소속되어 있는 부모
+    public Transform previousParent; //해당 오브젝트가 직전에 소속되어 있는 부모
     private RectTransform rect;
     private CanvasGroup canvasGroup;
 
@@ -35,6 +35,9 @@ public class DragUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         if(transform.parent == canvas) {
             transform.SetParent(previousParent);
             rect.position = previousParent.GetComponent<RectTransform>().position;
+        }
+        else {
+            previousParent.GetComponent<DropUI>().recent_level = null;
         }
         canvasGroup.alpha = 1.0f;
         canvasGroup.blocksRaycasts = true;

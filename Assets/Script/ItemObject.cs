@@ -29,6 +29,7 @@ public class ItemObject : MonoBehaviour {
             this.item_image.sprite = _item.item_image;
             this.item_drop = _item.item_drop;
         }
+
     }
 
     public void Drop() {
