@@ -42,7 +42,8 @@ public class DropManager : MonoBehaviour {
     }
 
     void Respawn_All() {
-        if(Input.GetKeyDown(KeyCode.Space) && Slot_check()) {
+        GameObject Pick_Clone = GameObject.FindWithTag("Pick_Parent");
+        if(Input.GetKeyDown(KeyCode.Space) && Slot_check() && Pick_Clone.gameObject.transform.childCount == 0) {
             for(int i = 0; i < Slot_count; i++) this.transform.GetChild(i).GetComponent<DropUI>().Respawn();
         }
     }
