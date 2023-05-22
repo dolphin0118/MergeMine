@@ -15,15 +15,18 @@ public class DropUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointe
     public bool isRespawn;
 
     void Awake() {
-        if(this.transform.childCount == 0) spawn();
-        previous_object = transform.GetChild(0).gameObject.GetComponent<ItemObject>();
-        previous_level = previous_object.item_Level;
-        recent_level = 0;
-        isRespawn = true;
+        init();
         image = GetComponent<Image>();
         rect = GetComponent<RectTransform>();
     }
-
+    public void init() {
+        if(this.transform.childCount == 0) spawn();
+        previous_object = transform.GetChild(0).gameObject.GetComponent<ItemObject>();
+        previous_object.item_Level = 0;
+        previous_level = previous_object.item_Level;
+        recent_level = 0;
+        isRespawn = true;
+    }
     public void OnPointerEnter(PointerEventData eventData) {
         image.color = Color.yellow;
     }

@@ -20,7 +20,6 @@ public class Block_state : MonoBehaviour {
     void Update() {
         broken_degree();
         Destroy_block();
-        text.GetComponent<TextMesh>().text = block.Block_gold.ToString() + " Gold";
     }
 
     void broken_degree() {
@@ -40,9 +39,10 @@ public class Block_state : MonoBehaviour {
     void Destroy_block() {
         if(Hp_percent >= 1) {
             GameObject canvas = GameObject.FindWithTag("Canvas");
+            text.GetComponent<TextMesh>().text = block.Block_gold.ToString() + " Gold";
             GameObject text_inst = Instantiate(text, transform.position, Quaternion.identity);
             text_inst.transform.SetParent(canvas.transform);
-           //GoldManager.instance.Gold += block.Block_gold;
+            GoldManager.instance.Gold += block.Block_gold;
             Destroy(gameObject);
         }
     }

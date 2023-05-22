@@ -16,4 +16,4 @@ MonoBehaviour:
   item_image: {fileID: 21300000, guid: 2fa99b2b36242c94f9c3d6e4701f1095, type: 3}
   item_drop: {fileID: 9196898165207762589, guid: ec8f0f1489ea38d49ab51c44aa15f384, type: 3}
   item_hardness: 100
-  item_durability: 5
+  item_durability: 7
