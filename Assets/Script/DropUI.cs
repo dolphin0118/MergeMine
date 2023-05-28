@@ -8,24 +8,28 @@ public class DropUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointe
     private Image image;
     private RectTransform rect;
     public GameObject Item_prefab;
-    private ItemObject previous_object;
+    private ItemObject previous_object = null;
     private ItemObject recent_object;
     public int previous_level;
-    public int recent_level;
-    public bool isRespawn;
-
+    public int? recent_level;
+    
     void Awake() {
-        init();
+        if(this.transform.childCount == 0) {
+            init();
+        }
+        else {
+            previous_object = transform.GetChild(0).gameObject.GetComponent<ItemObject>();
+            previous_level = previous_object.item_Level;
+            recent_level = previous_level;
+        }
         image = GetComponent<Image>();
         rect = GetComponent<RectTransform>();
     }
     public void init() {
-        if(this.transform.childCount == 0) spawn();
+        spawn();
         previous_object = transform.GetChild(0).gameObject.GetComponent<ItemObject>();
-        previous_object.item_Level = 0;
         previous_level = previous_object.item_Level;
-        recent_level = 0;
-        isRespawn = true;
+        recent_level = previous_level;
     }
     public void OnPointerEnter(PointerEventData eventData) {
         image.color = Color.yellow;
@@ -42,30 +46,25 @@ public class DropUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointe
                 eventData.pointerDrag.GetComponent<RectTransform>().position = rect.position;
                 previous_object = transform.GetChild(0).gameObject.GetComponent<ItemObject>();
                 previous_level = previous_object.item_Level;
-                isRespawn = true;
+                recent_level = previous_level;
             }
             else if(this.transform.childCount == 1) {
-                previous_object = transform.GetChild(0).gameObject.GetComponent<ItemObject>();
-                recent_object = eventData.pointerDrag.transform.gameObject.GetComponent<ItemObject>();
-                if(previous_object.item_Level == recent_object.item_Level) Combine(eventData);
-                else Swap(eventData);
+                Combine(eventData);
             }
         }
     }
 
     public void Combine(PointerEventData eventData) {
-        previous_level = previous_object.item_Level + 1;
-        previous_object.item_Level = previous_level;
-        DragUI recent_parent = eventData.pointerDrag.transform.gameObject.GetComponent<DragUI>();
-        recent_parent.previousParent.GetComponent<DropUI>().isRespawn = false;
-        Destroy(eventData.pointerDrag.transform.gameObject);
-    }
+        previous_object = transform.GetChild(0).gameObject.GetComponent<ItemObject>();
+        recent_object = eventData.pointerDrag.transform.gameObject.GetComponent<ItemObject>();
+        if(previous_object.item_Level == recent_object.item_Level){
+            previous_level = previous_object.item_Level + 1;
+            previous_object.item_Level = previous_level;
+            eventData.pointerDrag.transform.gameObject.GetComponent<DragUI>().previousParent.GetComponent<DropUI>().recent_level = null;
+            Destroy(eventData.pointerDrag.transform.gameObject);
+        }
+        else return;
 
-    public void Swap(PointerEventData eventData) {
-        previous_level = recent_object.item_Level;
-        recent_level = previous_object.item_Level;
-        previous_object.item_Level = previous_level;
-        recent_object.item_Level = (int)recent_level;
     }
 
     public void spawn() { 
@@ -78,6 +77,9 @@ public class DropUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointe
     }
 
     public void Respawn() {
-        if(isRespawn) spawn();
+        GameObject Pick_Clone = GameObject.FindWithTag("Pick_Parent");
+        if (Pick_Clone.transform.childCount == 0 && this.transform.childCount == 0 && recent_level != null) {
+            spawn();
+        }
     }
 }

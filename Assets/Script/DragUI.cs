@@ -37,7 +37,7 @@ public class DragUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             rect.position = previousParent.GetComponent<RectTransform>().position;
         }
         else {
-            previousParent.GetComponent<DropUI>().isRespawn = false;
+           // previousParent.GetComponent<DropUI>().isRespawn = false;
         }
         canvasGroup.alpha = 1.0f;
         canvasGroup.blocksRaycasts = true;

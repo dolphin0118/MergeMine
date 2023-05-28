@@ -61,6 +61,7 @@ public class DropManager : MonoBehaviour {
             for (int i = 0; i < Slot_count; i++) {
                 if(Items[i] == null && GoldManager.instance.Gold > 100) {
                     this.transform.GetChild(i).GetComponent<DropUI>().init();
+                    Debug.Log("create");
                     GoldManager.instance.Gold -=100;
                     break;
                 }

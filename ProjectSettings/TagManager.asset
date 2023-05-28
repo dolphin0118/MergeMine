@@ -10,6 +10,7 @@ TagManager:
   - Block_Parent
   - Canvas
   - Gold
+  - Goal
   layers:
   - Default
   - TransparentFX

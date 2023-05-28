@@ -33,6 +33,11 @@ public class DropItem : MonoBehaviour {
             item_durability -= 1;
         }
     }
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag == "Goal") {
+            GameManager.instance.isGameClear = true;
+        }
+    }
     void Item_destroy() {
         if(item_durability <= 0) Destroy(gameObject); 
     }
