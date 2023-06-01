@@ -20,7 +20,7 @@ public class DragUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void OnBeginDrag(PointerEventData eventData) {
         previousParent = transform.parent;
-
+        previousParent.GetComponent<DropUI>().isspawn = false;
         transform.SetParent(canvas);
         transform.SetAsLastSibling();
 
@@ -34,11 +34,11 @@ public class DragUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void OnEndDrag(PointerEventData eventData) {
         if(transform.parent == canvas) {
+            previousParent.GetComponent<DropUI>().isspawn = true;
             transform.SetParent(previousParent);
             rect.position = previousParent.GetComponent<RectTransform>().position;
         }
         else {
-           previousParent.GetComponent<DropUI>().isspawn = false;
             previousParent.GetComponent<DropUI>().previous_level = 0;
         }
         canvasGroup.alpha = 1.0f;

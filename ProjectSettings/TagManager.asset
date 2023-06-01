@@ -11,6 +11,7 @@ TagManager:
   - Canvas
   - Gold
   - Goal
+  - Score
   layers:
   - Default
   - TransparentFX
