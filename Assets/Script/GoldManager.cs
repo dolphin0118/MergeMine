@@ -13,6 +13,6 @@ public class GoldManager : MonoBehaviour {
     }
 
     void Update(){
-        gold_text.text = "Gold \n" + Gold.ToString();
+        gold_text.text = "Gold \n\n" + Gold.ToString();
     }
 }

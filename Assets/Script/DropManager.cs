@@ -7,12 +7,16 @@ public class DropManager : MonoBehaviour {
     private int Slot_count = 0;
     private CanvasGroup Invisible;
     public ItemObject[] Items;
+    public DropUI[] Drops;
     void Awake() {
         if(instance == null) {instance = this;}
         else Destroy(this.gameObject);
+
         Slot_count = this.transform.childCount;
         Items = new ItemObject[Slot_count];
+        Drops = new DropUI[Slot_count];
         Invisible = GetComponent<CanvasGroup>();
+        Drop_init();
     }
 
     void Update(){
@@ -20,7 +24,23 @@ public class DropManager : MonoBehaviour {
         Drop_All();
         Respawn_All();
     }
-
+    void Drop_init() {
+        int spawn_count = 3;
+        for (int i = 0; i < Slot_count; i++) {
+            Drops[i] = this.transform.GetChild(i).GetComponent<DropUI>();
+            if(spawn_count > 0 && Random.Range(0, 10) > 6) {
+                spawn_count--;
+                Drops[i].isspawn = true;
+                continue;
+            }
+            if(spawn_count > 0 && spawn_count > Slot_count - (i+1)) {
+                spawn_count--;
+                Drops[i].isspawn = true;
+            }
+        }
+            
+ 
+    }
     bool Slot_check() {
         for (int i = 0; i < Slot_count; i++) {
             if (this.transform.GetChild(i).transform.childCount == 1) return false;

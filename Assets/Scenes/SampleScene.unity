@@ -2027,7 +2027,6 @@ GameObject:
   - component: {fileID: 928057857}
   - component: {fileID: 928057859}
   - component: {fileID: 928057858}
-  - component: {fileID: 928057860}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2162,27 +2161,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928057856}
   m_CullTransparentMesh: 1
---- !u!223 &928057860
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928057856}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1 &949457001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,6 +2291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items: []
+  Drops: []
 --- !u!225 &949457007
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3991,6 +3970,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 949457002}
     m_Modifications:
+    - target: {fileID: 6715497702971643826, guid: 19b3c38b12d90ef43b1dff2f9e3a306f, type: 3}
+      propertyPath: isspawn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6715497702971643828, guid: 19b3c38b12d90ef43b1dff2f9e3a306f, type: 3}
       propertyPath: m_Name
       value: EquipmentSlot

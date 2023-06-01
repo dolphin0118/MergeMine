@@ -12,6 +12,7 @@ public class DragUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     void Awake()
     {
+        previousParent = transform.parent;
         canvas = FindObjectOfType<Canvas>().transform;
         rect = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -37,7 +38,8 @@ public class DragUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             rect.position = previousParent.GetComponent<RectTransform>().position;
         }
         else {
-           // previousParent.GetComponent<DropUI>().isRespawn = false;
+           previousParent.GetComponent<DropUI>().isspawn = false;
+            previousParent.GetComponent<DropUI>().previous_level = 0;
         }
         canvasGroup.alpha = 1.0f;
         canvasGroup.blocksRaycasts = true;
