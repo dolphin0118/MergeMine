@@ -71,6 +71,7 @@ public class DropManager : MonoBehaviour {
                 this.transform.GetChild(i).GetComponent<DropUI>().Respawn();
             }
             MapManager.instance.ReCreate();
+            GoldManager.instance.Respawn_count+=1;
             Invisible.alpha = 1;
         }
         
@@ -79,9 +80,9 @@ public class DropManager : MonoBehaviour {
     public void Create_Item() {
         if(!Slot_check()) {
             for (int i = 0; i < Slot_count; i++) {
-                if(Items[i] == null && GoldManager.instance.Gold > 100) {
-                    this.transform.GetChild(i).GetComponent<DropUI>().init();
-                    Debug.Log("create");
+                if(Items[i] == null && GoldManager.instance.Gold >= 100) {
+                    this.transform.GetChild(i).GetComponent<DropUI>().newcreate();
+                    GoldManager.instance.Create_pick +=1;
                     GoldManager.instance.Gold -=100;
                     break;
                 }

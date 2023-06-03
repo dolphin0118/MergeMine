@@ -23,8 +23,8 @@ public class ItemObject : MonoBehaviour {
 ;    }
 
     void Update() {
-        if(ItemDB.instance != null && item_Level < int.MaxValue) {
-            _item = ItemDB.instance.item_DB[item_Level];
+        if(ItemDB.instance != null && item_Level > 0) {
+            _item = ItemDB.instance.item_DB[item_Level - 1];
             this.item_Level = _item.item_Level;
             this.item_image.sprite = _item.item_image;
             this.item_drop = _item.item_drop;

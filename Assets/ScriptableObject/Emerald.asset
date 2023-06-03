@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163b1f19459598c4a9b0b3191d77d3af, type: 3}
   m_Name: Emerald
   m_EditorClassIdentifier: 
-  Block_hardness: 75
+  Block_hardness: 80
   Block_image:
   - {fileID: 21300000, guid: 30e4e9691d4898b4ab5f7ff6df5fb480, type: 3}
   - {fileID: 21300000, guid: 43d9398271ad69742a57a57b4b30f692, type: 3}
   - {fileID: 21300000, guid: 392486ec07841c34ea437b05721001d7, type: 3}
   - {fileID: 21300000, guid: 1a4e5385c77e96a4a86d612f2b025f42, type: 3}
   - {fileID: 21300000, guid: 76177c54a2be49e42832a9eb44788b1a, type: 3}
-  Block_gold: 50
+  Block_gold: 75

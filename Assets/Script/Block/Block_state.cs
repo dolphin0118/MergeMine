@@ -42,8 +42,10 @@ public class Block_state : MonoBehaviour {
             text.GetComponent<TextMesh>().text = block.Block_gold.ToString() + " Gold";
             GameObject text_inst = Instantiate(text, transform.position, Quaternion.identity);
             text_inst.transform.SetParent(canvas.transform);
-            GoldManager.instance.Gold += block.Block_gold;
             Destroy(gameObject);
+
+            GoldManager.instance.Gold += block.Block_gold;
+            GoldManager.instance.Broken_block += 1;
         }
     }
 }

@@ -23,10 +23,16 @@ public class DropUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointe
         if(isspawn) {
             spawn();
             previous_object = transform.GetChild(0).gameObject.GetComponent<ItemObject>();
+            previous_object.item_Level = 1;
             previous_level = previous_object.item_Level;
             recent_level = previous_level;
         }
     }
+    public void newcreate() {
+        isspawn = true;
+        init();
+    }
+
     public void OnPointerEnter(PointerEventData eventData) {
         image.color = Color.yellow;
     }
